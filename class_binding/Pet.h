@@ -14,5 +14,9 @@ public:
       return name;
     }
 
+    static std::string getClassName(){
+      return "Pet";
+    }
+
     std::string name;
 };

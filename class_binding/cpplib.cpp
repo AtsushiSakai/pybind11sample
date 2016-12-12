@@ -13,7 +13,8 @@ PYBIND11_PLUGIN(cpplib){
   py::class_<Pet>(m, "Pet")
         .def(py::init<const std::string &>())
         .def("setName", &Pet::setName)
-        .def("getName", &Pet::getName);
+        .def("getName", &Pet::getName)
+        .def_static("getClassName", &Pet::getClassName);
 
   return m.ptr();
 }
