@@ -1,7 +1,8 @@
 /**
  *  @brief sample code of pybind11
  */
-#include "Pet.h"
+
+#include "Dog.h"
 #include <pybind11/pybind11.h>
 
 namespace py = pybind11;
@@ -11,9 +12,11 @@ PYBIND11_PLUGIN(cpplib) {
 
   py::class_<Pet>(m, "Pet")
       .def(py::init<const std::string &>())
-      .def("setName", &Pet::setName)
-      .def("getName", &Pet::getName)
-      .def_static("getClassName", &Pet::getClassName);
+      .def_readwrite("name", &Pet::name);
+
+  py::class_<Dog, Pet>(m, "Dog")
+      .def(py::init<const std::string &>())
+      .def("Bark", &Dog::Bark);
 
   return m.ptr();
 }
